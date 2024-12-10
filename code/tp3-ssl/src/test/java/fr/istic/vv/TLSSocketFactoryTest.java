@@ -27,7 +27,7 @@ public class TLSSocketFactoryTest {
                 return null;
             }
 
-            public void setEnabledProtocols(String[] protocols) {
+                public void setEnabledProtocols(String[] protocols) {
                 fail();
             }
         });
@@ -47,7 +47,7 @@ public class TLSSocketFactoryTest {
             }
             @Override
             public void setEnabledProtocols(String[] protocols) {
-                assertTrue(Arrays.equals(protocols, new String[] {"TLSv1.2", "TLSv1.1", "TLSv1", "SSLv3" }));
+                    assertTrue(Arrays.equals(protocols, new String[] {"TLSv1.2", "TLSv1.1", "TLSv1", "SSLv3" }));
             }
         });
     }

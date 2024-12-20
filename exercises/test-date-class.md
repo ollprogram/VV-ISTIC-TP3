@@ -53,3 +53,28 @@ Use the project in [tp3-date](../code/tp3-date) to complete this exercise.
 
 ## Answer
 
+1. On peut tout d'abord identifier que tout ce déroule dans trois domaines.
+
+ - Le domaine des jours, des entiers povant être inférieurs à 1, entre 1 et 31, puis tout ce qui est supérieur à 31.
+ - Le domaine des mois, des entiers également composé de trois parties, [1,3,5,7,8,10,12] les mois avec 31 jour, [4,6,9,11] les mois avec 30 jours et enfin le mois de février [2] contenant 28 ou 29 jours en fonction de si l'année en cous est bisextile.
+ - Le dernier domaine est celui de l'année, 2 domaine sont possibles, le premier étant les années bisextile (tout les années divisible par 4), et le reste
+
+ 2. Statement Coverage = 19/22 = 86% de couverture il nous faut donc rajouter un test pour obtenir une bonne couverture. Le problème est que compareTo test pas toutes les instructions
+
+ 3. Dans mon code, dans la fonction "isValideDate()"", j'ai cette condition :
+ 
+        isLongMonth(month) && (day < 1 || day > 31)
+
+    D'après le Base Choice Coverage il faudrait pour tester au mieux la condition au minimum quatres tests différents car si on pose A && (B || C), il faudrait :
+
+    Si A = Faux, 1 test car le résultat sera faux pour n'importe quel valeur de B ou C
+    Si A = Vrai, 3 test car il y a tout d'abord le cas ou B et C sont Faux mais aussi les deux cas ou B ou C vaut Vrai.
+
+    Après vérification de nos tests, nous avons décidé de rajouter le test ci dessous, car les tests ne vérifiait pas le cas suivant A = Vrai, B = Faux, C = Vrai. 
+
+        @Test
+        public void testIsValid6(){
+            assertFalse(Date.isValidDate(0,10,1));
+        }
+ 4. 
+    
